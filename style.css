@@ -1,0 +1,207 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #050811;
+  color: white;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+header {
+  position: relative;
+  height: 60vh;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.title-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  text-align: center;
+  text-shadow: 0 0 15px black;
+  z-index: 10;
+}
+
+main {
+  min-height: 90vh;
+  padding: 2rem;
+  background: linear-gradient(#050811, #080c1a);
+}
+
+.tiles {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin: 4rem 0;
+  flex-wrap: wrap;
+}
+
+.tile {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 400px; /* stała szerokość */
+  height: 190px; /* stała wysokość */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.tile p {
+  font-family: "Merriweather", serif; /* elegancki, czytelny font */
+  font-size: 1.1rem; /* trochę większy niż standard */
+  line-height: 1.6; /* więcej oddechu między wierszami */
+  color: #f0f0f0; /* delikatnie jaśniejszy niż czysta biel */
+  margin: 0;
+}
+
+.tile.left {
+  align-self: flex-start;
+}
+.tile.right {
+  align-self: flex-end;
+}
+
+.tile.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.after-tiles {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: 4rem;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 7rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.card-container {
+  perspective: 1000px;
+}
+
+.card {
+  width: 220px;
+  height: 300px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+  cursor: pointer;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card-front {
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-label {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.question {
+  font-size: 3rem;
+  color: white;
+}
+
+.card-back {
+  background: black;
+  transform: rotateY(180deg);
+}
+
+.card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+@media (max-width: 380px) {
+  main {
+    padding: 1rem;
+  }
+
+  .title-center {
+    font-size: 1.8rem;
+    padding: 0 0.5rem;
+  }
+
+  .tiles {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .tile {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .tile p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .after-tiles {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .card {
+    width: 200px;
+    height: 270px;
+  }
+
+  .card-label {
+    font-size: 0.9rem;
+  }
+
+  .question {
+    font-size: 2.5rem;
+  }
+}
